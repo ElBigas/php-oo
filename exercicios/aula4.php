@@ -1,6 +1,7 @@
 <?php
 //herança, também pode ser classe pai e filhos, genérica e especializadas e superclasse e subclasses
 
+//classe pai
 class Veiculo {
     public $placa = null;
     public $cor = null;
@@ -8,8 +9,13 @@ class Veiculo {
     function acelerar() {
         echo "Acelerar";
     }
+    
+    function freiar() {
+        echo "Freiar";
+    }
 }
 
+//classe carro vai extender de veiculo $placa e $cor e adicionar mais funções
 class Carro extends Veiculo {
 
     function __construct($placa, $cor) {
@@ -20,12 +26,13 @@ class Carro extends Veiculo {
     function abrirTetoSolar() {
         echo 'Abrir teto solar';
     }
-    
+
     function alterarPosicaoVolante() {
         echo 'Alterar posição volante';
     }
 }
 
+//classe moto vai extender de veiculo $placa e $cor e adicionar mais funções
 class Moto extends Veiculo {
 
     public $contraPesoGuidao = true;
@@ -41,4 +48,4 @@ class Moto extends Veiculo {
 }
 
 $carro = new Carro('ABC1234', 'PRETO');
-$carro = new Moto('CBA4321', 'BRANCO');
+$moto = new Moto('CBA4321', 'BRANCO');
