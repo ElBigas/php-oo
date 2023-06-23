@@ -49,7 +49,7 @@ class Pai {
         $x = rand(1, 10);
 
         //chama os metodos protegidos internamente conforme a lógica
-        if($x >= 1 && $x <= 5) {
+        if ($x >= 1 && $x <= 5) {
             $this->executarMania();
         } else {
             $this->responder();
@@ -57,5 +57,30 @@ class Pai {
     }
 }
 
-$pai = new Pai();
-echo $pai->executarAcao(); // não apresenta erro pois foram definidos os metodos get e set
+//herda tudo da classe pai que é public e protected, os que são private não são
+class Filho extends Pai {
+    
+    public function getAtributo($attr) {
+        return $this->$attr;
+    }
+
+    public function setAtributo($attr, $value) {
+        $this->$attr = $value;
+    }
+}
+
+/* $pai = new Pai();
+echo $pai->executarAcao(); // não apresenta erro pois foram definidos os metodos get e set */
+
+$filho = new Filho();
+echo "<pre>";
+print_r($filho);
+echo "</pre>";
+echo $filho->getAtributo('nome'); //aqui irá dar erro pois o nome é private, se os metodos get e set forem definidos no pai eles também herdarão e não haverá erros
+
+$filho->setAtributo('nome', 'Silva'); //irá criar o atributo nome e atruir Silva
+echo "<pre>";
+print_r($filho);
+echo "</pre>";
+echo "<br />";
+echo $filho->getAtributo('nome'); //não dará mais erro 
