@@ -37,7 +37,7 @@ class TV implements EquipamentosEletroInterface {
     }
 }
 
-//-----------------------------------------------------
+//----------------------------------------------------
 
 //mais de uma interface
 interface MamiferoInterface {
